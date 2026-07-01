@@ -1,13 +1,14 @@
 from langgraph.graph import StateGraph, START, END
 
 from state import State
-from node import node_a, node_b, node_c, route_from_a
+from node import node_a, node_c, route_from_a
+from b_subgraph import build_b_subgraph
 
 
 def build_graph():
     graph_builder = StateGraph(State)
     graph_builder.add_node("A", node_a)
-    graph_builder.add_node("B", node_b)
+    graph_builder.add_node("B", build_b_subgraph())
     graph_builder.add_node("C", node_c)
 
     graph_builder.add_edge(START, "A")

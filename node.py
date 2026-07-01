@@ -11,11 +11,6 @@ def route_from_a(state: State) -> str:
     return "C" if state.get("skip_b") else "B"
 
 
-def node_b(state: State) -> State:
-    print("Node B")
-    return state
-
-
 def node_c(state: State) -> State:
     print("Node C")
     return state
