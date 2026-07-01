@@ -1,7 +1,7 @@
 from langgraph.graph import StateGraph, START, END
 
 from state import State
-from node import node_a, node_b, node_c
+from node import node_a, node_b, node_c, route_from_a
 
 
 def build_graph():
@@ -11,7 +11,7 @@ def build_graph():
     graph_builder.add_node("C", node_c)
 
     graph_builder.add_edge(START, "A")
-    graph_builder.add_edge("A", "B")
+    graph_builder.add_conditional_edges("A", route_from_a, {"B": "B", "C": "C"})
     graph_builder.add_edge("B", "C")
     graph_builder.add_edge("C", END)
 
